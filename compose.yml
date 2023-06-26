@@ -1,0 +1,34 @@
+version: '3.1'
+services:
+  glpi:
+    image: localhost/glpi
+    build:
+      context: .
+    environment:
+      DB_HOST: db
+      DB_USER: glpi
+      DB_DATABASE: glpi
+      DB_PASSWORD: glpi
+      DEFAULT_LANGUAGE: en_GB
+    ports:
+    - 80:80
+
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_USER: glpi
+      MYSQL_PASSWORD: glpi
+      MYSQL_DATABASE: glpi
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+    - data:/var/lib/mysql
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+    - 8080:8080
+
+volumes:
+  data:
