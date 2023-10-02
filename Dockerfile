@@ -37,7 +37,7 @@ RUN <<EOT
   rm *.tar.xz
 EOT
 
-ARG GLPI_VERSION=10.0.7
+ARG GLPI_VERSION=10.0.10
 RUN <<EOT
   set -ex;
   base=https://github.com/glpi-project/glpi/releases/download
