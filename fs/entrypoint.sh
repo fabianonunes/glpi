@@ -21,6 +21,6 @@ rm install/install.php
 php bin/console database:enable_timezones || true
 php bin/console db:update --no-interaction --no-telemetry
 
-chown -R www-data:www-data /var/www/glpi
+chown -R www-data:www-data /var/www/glpi || true
 
 exec pebble run --verbose "$@"
