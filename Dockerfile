@@ -1,4 +1,7 @@
 # syntax=docker/dockerfile:1.4
+FROM golang as builder
+RUN go install github.com/canonical/pebble/cmd/pebble@v1.5.0
+
 FROM ubuntu:22.04
 
 RUN <<EOT
@@ -26,17 +29,6 @@ RUN <<EOT
   rm -rf /var/lib/apt/lists/*
 EOT
 
-ARG S6_OVERLAY_VERSION=3.1.5.0
-RUN <<EOT
-  set -ex;
-  base=https://github.com/just-containers/s6-overlay/releases/download
-  curl -JLO "${base}/v${S6_OVERLAY_VERSION}/s6-overlay-noarch.tar.xz"
-  curl -JLO "${base}/v${S6_OVERLAY_VERSION}/s6-overlay-x86_64.tar.xz"
-  tar -C / -Jxpf s6-overlay-noarch.tar.xz
-  tar -C / -Jxpf s6-overlay-x86_64.tar.xz
-  rm *.tar.xz
-EOT
-
 ARG GLPI_VERSION=10.0.10
 RUN <<EOT
   set -ex;
@@ -47,8 +39,7 @@ RUN <<EOT
   chown -R www-data:www-data /var/www/glpi
 EOT
 
+COPY --from=builder /go/bin/pebble /usr/local/bin/pebble
 COPY /fs /
 
-ENV S6_CMD_WAIT_FOR_SERVICES_MAXTIME=0
-
-ENTRYPOINT ["/init"]
+ENTRYPOINT [ "/entrypoint.sh" ]

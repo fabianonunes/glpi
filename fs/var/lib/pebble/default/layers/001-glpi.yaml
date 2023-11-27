@@ -1,0 +1,12 @@
+services:
+  php:
+    override: replace
+    startup: enabled
+    command: /var/lib/pebble/default/php
+
+  nginx:
+    override: replace
+    startup: enabled
+    command: /var/lib/pebble/default/nginx
+    after:
+    - php

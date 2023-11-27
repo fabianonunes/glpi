@@ -1,10 +1,10 @@
-#!/command/with-contenv sh
-# shellcheck shell=sh
-set -e
+#!/bin/bash
+set -ex
 
 wait-for-it "${DB_HOST:?}":"${DB_PORT:-3306}" -t 60
 
 cd /var/www/glpi || exit
+
 php bin/console db:install                   \
   --no-interaction                           \
   --reconfigure                              \
@@ -13,11 +13,14 @@ php bin/console db:install                   \
   --db-name "${DB_DATABASE:?}"               \
   --db-user "${DB_USER:?}"                   \
   --db-password "${DB_PASSWORD:?}"           \
-  --default-language "${DEFAULT_LANGUAGE:?}"
+  --default-language "${DEFAULT_LANGUAGE:?}" \
+|| true
 
 rm install/install.php
 
-php bin/console database:enable_timezones
+php bin/console database:enable_timezones || true
 php bin/console db:update --no-interaction --no-telemetry
 
 chown -R www-data:www-data /var/www/glpi
+
+exec pebble run --verbose "$@"
