@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.4
 FROM golang as builder
-RUN go install github.com/canonical/pebble/cmd/pebble@v1.5.0
+RUN go install github.com/canonical/pebble/cmd/pebble@v1.6.0
 
 FROM ubuntu:22.04
 
