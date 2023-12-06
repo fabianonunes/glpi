@@ -11,6 +11,7 @@ RUN <<EOT
   apt-get install -y --no-install-recommends \
     ca-certificates                          \
     curl                                     \
+    gosu                                     \
     nginx                                    \
     php8.1-bz2                               \
     php8.1-curl                              \
