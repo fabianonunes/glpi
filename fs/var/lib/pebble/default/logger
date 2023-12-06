@@ -1,0 +1,6 @@
+#!/bin/bash
+set -e
+
+log_file=/var/www/glpi/files/_log/php-errors.log
+touch "$log_file"
+exec tail -f "$log_file"

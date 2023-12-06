@@ -12,3 +12,12 @@ services:
     command: /var/lib/pebble/default/nginx
     after:
     - php
+
+  logger:
+    override: replace
+    startup: enabled
+    user: www-data
+    group: www-data
+    command: /var/lib/pebble/default/nginx
+    after:
+    - nginx
