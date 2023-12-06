@@ -2,8 +2,6 @@ services:
   php:
     override: replace
     startup: enabled
-    user: www-data
-    group: www-data
     command: /var/lib/pebble/default/php
 
   nginx:
