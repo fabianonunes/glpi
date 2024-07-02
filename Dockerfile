@@ -30,7 +30,7 @@ RUN <<EOT
   rm -rf /var/lib/apt/lists/*
 EOT
 
-ARG GLPI_VERSION=10.0.10
+ARG GLPI_VERSION=10.0.15
 RUN <<EOT
   set -ex;
   base=https://github.com/glpi-project/glpi/releases/download
