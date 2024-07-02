@@ -5,6 +5,10 @@ wait-for-it "${DB_HOST:?}":"${DB_PORT:-3306}" -t 60
 
 cd /var/www/glpi || exit
 
+if [[ -n $GLPI_CRYPTKEY ]]; then
+  echo "$GLPI_CRYPTKEY" > config/glpicrypt.key
+fi
+
 php bin/console db:install                   \
   --no-interaction                           \
   --reconfigure                              \
