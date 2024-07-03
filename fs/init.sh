@@ -18,5 +18,9 @@ php bin/console db:install                   \
 
 rm -f install/install.php
 
+if [[ -n $GLPICRYPT_KEY ]]; then
+  echo -n "$GLPICRYPT_KEY" > config/glpicrypt.key
+fi
+
 php bin/console database:enable_timezones || true
 php bin/console db:update --no-interaction --no-telemetry
