@@ -43,4 +43,6 @@ EOT
 COPY --from=builder /go/bin/pebble /usr/local/bin/pebble
 COPY /fs /
 
+WORKDIR /var/www/glpi
+
 ENTRYPOINT [ "/entrypoint.sh" ]
