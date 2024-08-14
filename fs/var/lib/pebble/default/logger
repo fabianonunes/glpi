@@ -1,4 +1,4 @@
 #!/bin/bash
 set -e
 
-exec tail -f /var/www/glpi/files/_log/php-errors.log
+exec tail --lines=0 --follow /var/www/glpi/files/_log/php-errors.log
