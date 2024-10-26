@@ -21,8 +21,6 @@ jobs:
         include:
         - image: ghcr.io/${{ github.repository }}
           dockerfile: Dockerfile
-        - image: ghcr.io/${{ github.repository }}/with-plugins
-          dockerfile: Dockerfile.with-plugins
 
     steps:
     - name: Log in to the Container registry
