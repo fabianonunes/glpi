@@ -5,7 +5,7 @@ wait-for-it "${DB_HOST:?}":"${DB_PORT:-3306}" -t 60
 
 cd /var/www/glpi || exit
 
-mkdir -p files/{_cache,_cron,_dumps,_graphs,_inventories,_locales,_lock,_log,_pictures,_plugins,_rss,_sessions,_tmp,_uploads}
+mkdir --parents files/_{cache,cron,dumps,graphs,inventories,locales,lock,log,pictures,plugins,rss,sessions,tmp,uploads}
 
 php bin/console db:install                   \
   --no-interaction                           \
