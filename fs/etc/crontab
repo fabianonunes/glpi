@@ -1,0 +1,1 @@
+*/30 * * * * find /var/www/glpi/files/_sessions -name 'sess_*' -type f -mmin +25 -delete

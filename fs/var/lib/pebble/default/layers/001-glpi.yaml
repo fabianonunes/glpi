@@ -4,6 +4,11 @@ services:
     startup: enabled
     command: /var/lib/pebble/default/php
 
+  cron:
+    override: replace
+    startup: enabled
+    command: supercronic -passthrough-logs /etc/crontab
+
   nginx:
     override: replace
     startup: enabled

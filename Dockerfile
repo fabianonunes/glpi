@@ -1,5 +1,6 @@
 # syntax=docker/dockerfile:1.4
 FROM golang as builder
+RUN go install github.com/aptible/supercronic@v0.2.33
 RUN go install github.com/canonical/pebble/cmd/pebble@v1.6.0
 
 FROM ubuntu:22.04
@@ -40,7 +41,7 @@ RUN <<EOT
   chown -R www-data:www-data /var/www/glpi
 EOT
 
-COPY --from=builder /go/bin/pebble /usr/local/bin/pebble
+COPY --from=builder /go/bin/ /usr/local/bin/
 COPY /fs /
 
 WORKDIR /var/www/glpi
