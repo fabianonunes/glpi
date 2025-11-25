@@ -14,6 +14,7 @@ RUN <<EOT
     curl                                     \
     gosu                                     \
     nginx                                    \
+    php8.3-bcmath                            \
     php8.3-bz2                               \
     php8.3-curl                              \
     php8.3-fpm                               \
