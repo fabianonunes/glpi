@@ -3,7 +3,7 @@ FROM golang:bookworm as builder
 RUN go install github.com/aptible/supercronic@v0.2.39
 RUN go install github.com/canonical/pebble/cmd/pebble@v1.25.0
 
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 
 RUN <<EOT
   set -ex;
@@ -14,24 +14,24 @@ RUN <<EOT
     curl                                     \
     gosu                                     \
     nginx                                    \
-    php8.1-bz2                               \
-    php8.1-curl                              \
-    php8.1-fpm                               \
-    php8.1-gd                                \
-    php8.1-intl                              \
-    php8.1-ldap                              \
-    php8.1-mbstring                          \
-    php8.1-mysql                             \
-    php8.1-xml                               \
-    php8.1-xmlrpc                            \
-    php8.1-zip                               \
+    php8.3-bz2                               \
+    php8.3-curl                              \
+    php8.3-fpm                               \
+    php8.3-gd                                \
+    php8.3-intl                              \
+    php8.3-ldap                              \
+    php8.3-mbstring                          \
+    php8.3-mysql                             \
+    php8.3-xml                               \
+    php8.3-xmlrpc                            \
+    php8.3-zip                               \
     wait-for-it                              \
     xz-utils                                 \
   ;
   rm -rf /var/lib/apt/lists/*
 EOT
 
-ARG GLPI_VERSION=10.0.18
+ARG GLPI_VERSION=11.0.2
 RUN <<EOT
   set -ex;
   base=https://github.com/glpi-project/glpi/releases/download
