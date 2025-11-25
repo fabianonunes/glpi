@@ -1,4 +1,4 @@
 #!/bin/bash
 set -e
 
-exec /usr/sbin/php-fpm8.1 --nodaemonize
+exec /usr/sbin/php-fpm8.3 --nodaemonize
