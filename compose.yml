@@ -17,6 +17,7 @@ services:
 
   db:
     image: mariadb
+    command: --skip-grant-tables
     restart: always
     environment:
       MYSQL_USER: glpi
