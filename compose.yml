@@ -10,8 +10,8 @@ services:
       DB_PASSWORD: glpi
       DEFAULT_LANGUAGE: en_GB
     volumes:
-    - marketplace:/var/www/glpi/marketplace
-    - files:/var/www/glpi/files
+    - ./data/marketplace:/var/www/glpi/marketplace
+    - ./data/files:/var/www/glpi/files
     ports:
     - 80:80
 
@@ -26,15 +26,10 @@ services:
     ports:
     - 3306:3306
     volumes:
-    - data:/var/lib/mysql
+    - ./data/mysql:/var/lib/mysql
 
   adminer:
     image: adminer
     restart: always
     ports:
     - 8080:8080
-
-volumes:
-  data:
-  marketplace:
-  files:
