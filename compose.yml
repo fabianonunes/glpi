@@ -1,8 +1,13 @@
 services:
   glpi:
-    image: ghcr.io/fabianonunes/docker.glpi:latest
+    image: ${IMAGE_REPOSITORY:-localhost/glpi}:${IMAGE_TAG:-latest}
     build:
       context: .
+      x-bake:
+        output: type=${IMAGE_OUTPUT_TYPE:-docker}
+        tags:
+        - ${IMAGE_REPOSITORY:-localhost/glpi}:${IMAGE_TAG:-latest}
+        - ${IMAGE_REPOSITORY:-localhost/glpi}:latest
     environment:
       DB_HOST: db
       DB_USER: glpi
