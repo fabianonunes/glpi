@@ -1,5 +1,5 @@
 #!/bin/bash
-set -ex
+set -e
 
 wait-for-it "${DB_HOST:?}":"${DB_PORT:-3306}" -t 60
 
