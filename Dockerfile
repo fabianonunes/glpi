@@ -3,7 +3,7 @@ FROM golang:bookworm as builder
 RUN go install github.com/aptible/supercronic@v0.2.39
 RUN go install github.com/canonical/pebble/cmd/pebble@v1.25.0
 
-FROM ubuntu:24.04
+FROM ubuntu:26.04
 
 RUN <<EOT
   set -ex;
@@ -14,18 +14,18 @@ RUN <<EOT
     curl                                     \
     gosu                                     \
     nginx                                    \
-    php8.3-bcmath                            \
-    php8.3-bz2                               \
-    php8.3-curl                              \
-    php8.3-fpm                               \
-    php8.3-gd                                \
-    php8.3-intl                              \
-    php8.3-ldap                              \
-    php8.3-mbstring                          \
-    php8.3-mysql                             \
-    php8.3-xml                               \
-    php8.3-xmlrpc                            \
-    php8.3-zip                               \
+    php8.5-bcmath                            \
+    php8.5-bz2                               \
+    php8.5-curl                              \
+    php8.5-fpm                               \
+    php8.5-gd                                \
+    php8.5-intl                              \
+    php8.5-ldap                              \
+    php8.5-mbstring                          \
+    php8.5-mysql                             \
+    php8.5-xml                               \
+    php8.5-xmlrpc                            \
+    php8.5-zip                               \
     wait-for-it                              \
     xz-utils                                 \
   ;
