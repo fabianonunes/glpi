@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1.4
 FROM golang:bookworm as builder
 RUN go install github.com/aptible/supercronic@v0.2.49
-RUN go install github.com/canonical/pebble/cmd/pebble@v1.25.0
+RUN go install github.com/canonical/pebble/cmd/pebble@v1.32.2
 
 FROM ubuntu:26.04
 
