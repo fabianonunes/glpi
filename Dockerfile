@@ -34,11 +34,13 @@ RUN <<EOT
 EOT
 
 ARG GLPI_VERSION=11.0.10
+ARG GLPI_SHA256=eebaf64e0b8857c09799b958d0e98c38aa6cb91eec9f1002cd8b81abe56ac2c0
 RUN <<EOT
   set -ex;
   base=https://github.com/glpi-project/glpi/releases/download
   curl --fail --silent --show-error --location --output "glpi-${GLPI_VERSION}.tgz" \
        "${base}/${GLPI_VERSION}/glpi-${GLPI_VERSION}.tgz"
+  echo "${GLPI_SHA256}  glpi-${GLPI_VERSION}.tgz" | sha256sum -c -
   tar -C /var/www/ -xf "glpi-${GLPI_VERSION}.tgz"
   rm *.tgz
   chown -R www-data:www-data /var/www/glpi
