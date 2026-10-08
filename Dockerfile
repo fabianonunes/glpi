@@ -13,7 +13,6 @@ RUN <<EOT
   apt-get install -y --no-install-recommends \
     ca-certificates                          \
     curl                                     \
-    gosu                                     \
     nginx                                    \
     php8.5-bcmath                            \
     php8.5-bz2                               \
@@ -47,6 +46,9 @@ EOT
 COPY --from=builder /go/bin/ /usr/local/bin/
 COPY /fs /
 
+RUN chown -R www-data:www-data /var/www/glpi /var/lib/pebble /var/lib/nginx /var/log/nginx /run
+
+USER www-data
 WORKDIR /var/www/glpi
 
 ENTRYPOINT [ "/entrypoint.sh" ]
