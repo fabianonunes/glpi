@@ -36,7 +36,8 @@ ARG GLPI_VERSION=11.0.10
 RUN <<EOT
   set -ex;
   base=https://github.com/glpi-project/glpi/releases/download
-  curl -JLO "${base}/${GLPI_VERSION}/glpi-${GLPI_VERSION}.tgz"
+  curl --fail --silent --show-error --location --output "glpi-${GLPI_VERSION}.tgz" \
+       "${base}/${GLPI_VERSION}/glpi-${GLPI_VERSION}.tgz"
   tar -C /var/www/ -xf "glpi-${GLPI_VERSION}.tgz"
   rm *.tgz
   chown -R www-data:www-data /var/www/glpi
