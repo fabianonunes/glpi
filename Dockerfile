@@ -31,8 +31,8 @@ RUN <<EOT
   rm -rf /var/lib/apt/lists/*
 EOT
 
-ARG GLPI_VERSION=11.0.10
-ARG GLPI_SHA256=eebaf64e0b8857c09799b958d0e98c38aa6cb91eec9f1002cd8b81abe56ac2c0
+ARG GLPI_VERSION=11.0.11
+ARG GLPI_SHA256=b918b1df4900e008cfc02d84bc9c57eae661e7075465f50b301ec5582b134de2
 RUN <<EOT
   set -ex;
   base=https://github.com/glpi-project/glpi/releases/download
