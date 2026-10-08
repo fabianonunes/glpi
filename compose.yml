@@ -14,8 +14,8 @@ services:
       DB_PASSWORD: glpi
       DEFAULT_LANGUAGE: en_GB
     volumes:
-    - ./data/marketplace:/var/www/glpi/marketplace
-    - ./data/files:/var/www/glpi/files
+    - glpi_marketplace:/var/www/glpi/marketplace
+    - glpi_files:/var/www/glpi/files
     ports:
     - 80:80
 
@@ -31,5 +31,9 @@ services:
     ports:
     - 3306:3306
     volumes:
-    - ./data/mysql:/var/lib/mysql
+    - mariadb:/var/lib/mysql
 
+volumes:
+  glpi_marketplace:
+  glpi_files:
+  mariadb:
