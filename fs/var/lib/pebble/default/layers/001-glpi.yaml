@@ -2,7 +2,7 @@ services:
   php:
     override: replace
     startup: enabled
-    command: /var/lib/pebble/default/php
+    command: /usr/sbin/php-fpm8.5 --nodaemonize
 
   cron:
     override: replace
@@ -12,7 +12,7 @@ services:
   nginx:
     override: replace
     startup: enabled
-    command: /var/lib/pebble/default/nginx
+    command: /usr/sbin/nginx -g "daemon off;"
     after:
     - php
 
