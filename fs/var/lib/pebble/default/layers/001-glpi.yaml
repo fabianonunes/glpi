@@ -7,6 +7,8 @@ services:
   cron:
     override: replace
     startup: enabled
+    user: www-data
+    group: www-data
     command: supercronic -passthrough-logs /etc/crontab
 
   nginx:
