@@ -1,7 +1,7 @@
 server {
   listen 80;
   root /var/www/glpi/public/;
-  error_log /var/log/nginx/error.log error;
+  error_log /dev/stderr;
 
   client_max_body_size 100m;
 
