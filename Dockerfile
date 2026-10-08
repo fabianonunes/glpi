@@ -25,10 +25,8 @@ RUN <<EOT
     php8.5-mbstring                          \
     php8.5-mysql                             \
     php8.5-xml                               \
-    php8.5-xmlrpc                            \
     php8.5-zip                               \
     wait-for-it                              \
-    xz-utils                                 \
   ;
   rm -rf /var/lib/apt/lists/*
 EOT
