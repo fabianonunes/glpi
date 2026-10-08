@@ -3,6 +3,4 @@ set -e
 
 cd /var/www/glpi/files/_log
 
-exec tail --lines=0 --follow=name --retry \
-  access-errors.log api.log event.log \
-  mail-error.log mailgate.log php-errors.log webhook.log
+exec tail --lines=0 --follow=name --retry {access-errors,api,event,mail-error,mailgate,php-errors,webhook}.log

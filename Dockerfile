@@ -35,12 +35,12 @@ ARG GLPI_SHA256=b918b1df4900e008cfc02d84bc9c57eae661e7075465f50b301ec5582b134de2
 RUN <<EOT
   set -ex;
   base=https://github.com/glpi-project/glpi/releases/download
-  curl --fail --silent --show-error --location --output "glpi-${GLPI_VERSION}.tgz" \
+  filename=glpi-${GLPI_VERSION}.tgz
+  curl --fail --silent --show-error --location --output "$filename" \
        "${base}/${GLPI_VERSION}/glpi-${GLPI_VERSION}.tgz"
-  echo "${GLPI_SHA256}  glpi-${GLPI_VERSION}.tgz" | sha256sum -c -
-  tar -C /var/www/ -xf "glpi-${GLPI_VERSION}.tgz"
-  rm *.tgz
-  chown -R www-data:www-data /var/www/glpi
+  echo "${GLPI_SHA256}  $filename" | sha256sum -c -
+  tar -C /var/www/ -xf "$filename"
+  rm "$filename"
 EOT
 
 COPY --from=builder /go/bin/ /usr/local/bin/
