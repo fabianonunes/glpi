@@ -2,7 +2,7 @@
 FROM golang:trixie AS builder
 ENV CGO_ENABLED=0
 RUN go install github.com/aptible/supercronic@v0.2.51
-RUN go install github.com/canonical/pebble/cmd/pebble@v1.33.0
+RUN go install github.com/canonical/pebble/cmd/pebble@v1.33.2
 
 FROM ubuntu:26.04
 
